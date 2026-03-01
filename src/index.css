@@ -1,0 +1,168 @@
+/* ════════════════════════════════════════════════════════
+   DESIGN SYSTEM — Da Marcolino  (Brand Guidelines 2025)
+   Palette: Carta/Bianco caldo · Rosso · Nero · Giallo · Verde
+   Font: Alfa Slab One · Oswald · Source Serif 4 · Bebas Neue
+════════════════════════════════════════════════════════ */
+
+:root {
+    /* ── Palette ufficiale brand ── */
+    --rosso: #C8392B;
+    --rosso2: #9B2D20;
+    --nero: #111111;
+    --bianco: #F9F6EF;
+    --carta: #EDE8DC;
+    --giallo: #E8B840;
+    --verde: #2D6A2D;
+    --grigio: #777777;
+
+    /* ── Derivati utili ── */
+    --rosso-dim: rgba(200, 57, 43, 0.10);
+    --rosso-line: rgba(200, 57, 43, 0.30);
+    --nero-dim: rgba(17, 17, 17, 0.07);
+    --nero-line: rgba(17, 17, 17, 0.15);
+    --giallo-dim: rgba(232, 184, 64, 0.15);
+    --verde-dim: rgba(45, 106, 45, 0.12);
+
+    /* ── Font ── */
+    --font-title: 'Alfa Slab One', Georgia, serif;
+    --font-label: 'Oswald', 'Helvetica Neue', sans-serif;
+    --font-serif: 'Source Serif 4', Georgia, serif;
+    --font-display: 'Bebas Neue', 'Oswald', sans-serif;
+
+    /* ── Radius ── */
+    --r-sm: 4px;
+    --r-md: 8px;
+    --r-lg: 12px;
+}
+
+/* ── Reset ──────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-serif);
+    background: var(--carta);
+    color: var(--nero);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+}
+
+/* ── Scrollbar ───────────────────────────────────────── */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--carta);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--rosso-line);
+    border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--rosso);
+}
+
+/* ════════════════════════════════════════════════
+   TOP NAV
+════════════════════════════════════════════════ */
+.app-nav {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    display: flex;
+    align-items: stretch;
+    background: var(--nero);
+    border-bottom: 3px solid var(--rosso);
+    padding: 0 24px;
+    gap: 0;
+}
+
+.app-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -3px;
+    cursor: pointer;
+    font-family: var(--font-label);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(249, 246, 239, 0.5);
+    transition: color 0.18s, border-color 0.18s;
+    white-space: nowrap;
+}
+
+.app-nav-btn:hover {
+    color: var(--bianco);
+}
+
+.app-nav-btn.active {
+    color: var(--bianco);
+    border-bottom-color: var(--rosso);
+}
+
+.app-nav-btn .nav-icon {
+    font-size: 16px;
+}
+
+.app-nav-divider {
+    width: 1px;
+    background: rgba(249, 246, 239, 0.1);
+    margin: 8px 0;
+}
+
+/* ════════════════════════════════════════════════
+   FIX B4 — hover bottoni × via CSS
+════════════════════════════════════════════════ */
+.del-btn {
+    transition: color 0.15s;
+}
+
+.del-btn:hover {
+    color: var(--rosso) !important;
+}
+
+/* ════════════════════════════════════════════════
+   UTILITY
+════════════════════════════════════════════════ */
+/* Separatore categoria stile menu brand */
+.cat-bar {
+    background: var(--rosso);
+    padding: 7px 16px;
+    font-family: var(--font-label);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--bianco);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cat-bar.nero {
+    background: var(--nero);
+}
+
+.cat-bar.giallo {
+    background: var(--giallo);
+    color: var(--nero);
+}
+
+.cat-bar.verde {
+    background: var(--verde);
+}
