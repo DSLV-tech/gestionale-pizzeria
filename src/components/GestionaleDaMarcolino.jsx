@@ -424,7 +424,7 @@ export default function GestionalePizzeria() {
                     {/* Logo SVG brand */}
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', borderRight: '1px solid rgba(249,246,239,0.12)', paddingRight: '24px', marginRight: '8px' }}>
                         <div style={{ fontFamily: "'Oswald', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '5px', textTransform: 'uppercase', color: C.rosso, lineHeight: 1, marginBottom: '6px' }}>Trattoria · Pizzeria</div>
-                        <img src="/scritta.svg" alt="Da Marcolino" style={{ height: '38px', width: 'auto', filter: 'brightness(0) invert(1)', display: 'block', marginBottom: '4px' }} />
+                        <img src={`${import.meta.env.BASE_URL}scritta.svg`} alt="Da Marcolino" style={{ height: '38px', width: 'auto', filter: 'brightness(0) invert(1)', display: 'block', marginBottom: '4px' }} />
                         <div style={{ fontFamily: "'Oswald', sans-serif", fontSize: '9px', fontWeight: 400, letterSpacing: '3px', textTransform: 'uppercase', color: 'rgba(249,246,239,0.4)', marginTop: '1px' }}>Pannello di Gestione</div>
                     </div>
                     <div style={{ flex: 1 }}>
