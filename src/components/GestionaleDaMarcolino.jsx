@@ -424,7 +424,7 @@ export default function GestionalePizzeria() {
                     {/* Logo SVG brand */}
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', borderRight: '1px solid rgba(249,246,239,0.12)', paddingRight: '24px', marginRight: '8px' }}>
                         <div style={{ fontFamily: "'Oswald', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '5px', textTransform: 'uppercase', color: C.rosso, lineHeight: 1, marginBottom: '6px' }}>Trattoria · Pizzeria</div>
-                        <img src={`${import.meta.env.BASE_URL}scritta.svg`} alt="Da Marcolino" style={{ height: '38px', width: 'auto', filter: 'brightness(0) invert(1)', display: 'block', marginBottom: '4px' }} />
+                        <img src={`${import.meta.env.BASE_URL}da-marcolino-logo.svg`} alt="Da Marcolino" style={{ height: '38px', width: 'auto', filter: 'brightness(0) invert(1)', display: 'block', marginBottom: '4px' }} />
                         <div style={{ fontFamily: "'Oswald', sans-serif", fontSize: '9px', fontWeight: 400, letterSpacing: '3px', textTransform: 'uppercase', color: 'rgba(249,246,239,0.4)', marginTop: '1px' }}>Pannello di Gestione</div>
                     </div>
                     <div style={{ flex: 1 }}>
@@ -492,7 +492,7 @@ export default function GestionalePizzeria() {
                             <span style={{ fontSize: '12px', color: T[500] }}>Impasto: <b style={{ color: T[100] }}>{base.pesoTot}g</b> → <b style={{ color: C.giallo }}>{base.nPalline} palline</b></span>
                             <button onClick={() => { setIngredienti(p => [...p, { id: nids.ing, nome: 'Nuovo', quantita: 0, costoPerKg: 0, colore: C.giallo }]); setNids(n => ({ ...n, ing: n.ing + 1 })); }} style={{ background: 'transparent', border: `1px solid ${C.giallo}66`, color: C.giallo, borderRadius: '6px', padding: '4px 10px', cursor: 'pointer', fontSize: '12px', fontFamily: 'inherit' }}>+ Aggiungi</button>
                         </div>
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 90px 120px 110px 30px', gap: '6px', padding: '4px 10px', fontSize: '10px', letterSpacing: '0.1em', textTransform: 'uppercase', color: T[700] }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 90px 120px 110px 30px', gap: '6px', padding: '4px 10px', fontSize: '10px', letterSpacing: '0.1em', textTransform: 'uppercase', color: T[500] }}>
                             <span>Ingrediente</span><span style={{ textAlign: 'right' }}>Qtà g</span><span style={{ textAlign: 'right' }}>€/kg</span><span style={{ textAlign: 'right' }}>Costo</span><span></span>
                         </div>
                         {(() => {
@@ -508,7 +508,7 @@ export default function GestionalePizzeria() {
                                             <input value={ing.nome} onChange={e => updIng(ing.id, 'nome', e.target.value)} style={{ background: 'transparent', border: 'none', color: T[100], fontSize: '13px', fontFamily: 'Inter, system-ui, sans-serif', outline: 'none' }} />
                                             <input type="number" min="0" value={ing.quantita} onChange={e => updIng(ing.id, 'quantita', e.target.value)} style={inSt} />
                                             <input type="number" min="0" step="0.01" value={ing.costoPerKg} onChange={e => updIng(ing.id, 'costoPerKg', e.target.value)} style={inSt} />
-                                            <div style={{ textAlign: 'right', fontSize: '13px', color: cr > 0 ? C.giallo : T[700] }}>{fmt4(cr)}</div>
+                                            <div style={{ textAlign: 'right', fontSize: '13px', color: cr > 0 ? C.giallo : T[500] }}>{fmt4(cr)}</div>
                                             <button onClick={() => setIngredienti(p => p.filter(i => i.id !== ing.id))} style={dBtn} className={delBtnClass}>×</button>
                                         </div>
                                         <div style={{ padding: '0 10px 6px', fontSize: '10px', color: T[500], display: 'flex', gap: '12px' }}>

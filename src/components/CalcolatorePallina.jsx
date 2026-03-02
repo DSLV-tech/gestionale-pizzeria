@@ -89,7 +89,7 @@ export default function CalcolatorePallina() {
                     {/* Logo SVG brand */}
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', borderRight: '1px solid rgba(249,246,239,0.12)', paddingRight: '24px', marginRight: '8px' }}>
                         <div style={{ fontFamily: "'Oswald', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '5px', textTransform: 'uppercase', color: C.rosso, lineHeight: 1, marginBottom: '6px' }}>Trattoria · Pizzeria</div>
-                        <img src={`${import.meta.env.BASE_URL}scritta.svg`} alt="Da Marcolino" style={{ height: '38px', width: 'auto', filter: 'brightness(0) invert(1)', display: 'block', marginBottom: '4px' }} />
+                        <img src={`${import.meta.env.BASE_URL}da-marcolino-logo.svg`} alt="Da Marcolino" style={{ height: '38px', width: 'auto', filter: 'brightness(0) invert(1)', display: 'block', marginBottom: '4px' }} />
                         <div style={{ fontFamily: "'Oswald', sans-serif", fontSize: '9px', fontWeight: 400, letterSpacing: '3px', textTransform: 'uppercase', color: 'rgba(249,246,239,0.4)', marginTop: '1px' }}>Calcolatore Impasto</div>
                     </div>
                     <div style={{ flex: 1 }}>
@@ -158,10 +158,11 @@ export default function CalcolatorePallina() {
                             <span>Ingrediente</span><span style={{ textAlign: 'right' }}>Qtà (g)</span><span style={{ textAlign: 'right' }}>€ / kg</span><span style={{ textAlign: 'right' }}>Costo riga</span><span></span>
                         </div>
 
-                        {ingredienti.map(ing => {
+                        {(() => {
+                            const farinaQ = Number(ingredienti.find(i => i.nome.toLowerCase().includes("farin"))?.quantita || 1);
+                            return ingredienti.map(ing => {
                             const costoRiga = (Number(ing.quantita) / 1000) * Number(ing.costoPerKg);
                             const perc = totali.pesoTotale > 0 ? (Number(ing.quantita) / totali.pesoTotale) * 100 : 0;
-                            const farinaQ = Number(ingredienti.find(i => i.nome.toLowerCase().includes("farin"))?.quantita || 1);
                             return (
                                 <div key={ing.id} style={{ background: BG.bianco, border: `1px solid ${BG.border}`, borderRadius: '6px', marginBottom: '5px', overflow: 'hidden' }}>
                                     <div style={{ height: '3px', background: `linear-gradient(90deg, ${ing.colore} ${perc}%, transparent ${perc}%)`, opacity: 0.8 }} />
@@ -180,7 +181,8 @@ export default function CalcolatorePallina() {
                                     </div>
                                 </div>
                             );
-                        })}
+                        });
+                        })()}
                     </div>
                 )}
 
