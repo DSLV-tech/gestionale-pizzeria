@@ -166,3 +166,90 @@ body {
 .cat-bar.verde {
     background: var(--verde);
 }
+
+/* ════════════════════════════════════════════════
+   RESPONSIVE — Adattivo per tablet e smartphone
+════════════════════════════════════════════════ */
+
+/* Header striscia top */
+.header-strip {
+    padding: 5px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Header corpo con logo e KPI */
+.header-body {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    padding: 18px 32px;
+}
+
+/* Wrapper contenuto principale */
+.main-content {
+    padding: 20px 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Grid 2 colonne slider */
+.sliders-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+/* Tab bar con scroll orizzontale */
+.tabs-bar {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-bottom: 18px;
+    gap: 0;
+}
+.tabs-bar::-webkit-scrollbar { display: none; }
+
+/* Griglia 2 colonne → 1 su smartphone */
+.resp-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+/* ── Tablet ≤ 900px ──────────────────────────── */
+@media (max-width: 900px) {
+    .header-strip { padding: 5px 20px; }
+    .header-body  { padding: 14px 20px; gap: 16px; }
+    .main-content { padding: 16px 20px; }
+
+    .app-nav {
+        padding: 0 10px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    .app-nav::-webkit-scrollbar { display: none; }
+}
+
+/* ── Smartphone ≤ 640px ──────────────────────── */
+@media (max-width: 640px) {
+    .header-strip { padding: 5px 14px; }
+    .header-body  { padding: 12px 14px; gap: 10px; }
+    .main-content { padding: 12px 14px; }
+
+    .sliders-grid { grid-template-columns: 1fr; }
+    .resp-2col    { grid-template-columns: 1fr; }
+
+    .app-nav { padding: 0 6px; }
+    .app-nav-btn {
+        padding: 10px 12px;
+        font-size: 10px;
+        letter-spacing: 1px;
+        gap: 5px;
+    }
+    .app-nav-btn .nav-icon { font-size: 14px; }
+}

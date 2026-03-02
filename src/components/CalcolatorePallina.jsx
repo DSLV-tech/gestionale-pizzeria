@@ -80,12 +80,12 @@ export default function CalcolatorePallina() {
             {/* ── Header brand ── */}
             <div style={{ background: BG.nero, padding: '0' }}>
                 {/* Striscia top rossa */}
-                <div style={{ background: C.rosso, padding: '5px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div className="header-strip" style={{ background: C.rosso }}>
                     <span style={{ fontFamily: "'Oswald', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '5px', textTransform: 'uppercase', color: 'rgba(249,246,239,0.7)' }}>Calcolatore Costo Pallina</span>
                     <span style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: '10px', fontStyle: 'italic', color: 'rgba(249,246,239,0.6)' }}>Stroppiana (VC) · Vercelli</span>
                 </div>
                 {/* Corpo header */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap', padding: '18px 32px' }}>
+                <div className="header-body">
                     {/* Logo SVG brand */}
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', borderRight: '1px solid rgba(249,246,239,0.12)', paddingRight: '24px', marginRight: '8px' }}>
                         <div style={{ fontFamily: "'Oswald', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '5px', textTransform: 'uppercase', color: C.rosso, lineHeight: 1, marginBottom: '6px' }}>Trattoria · Pizzeria</div>
@@ -107,10 +107,10 @@ export default function CalcolatorePallina() {
             </div>
 
 
-            <div style={{ padding: '24px 40px', maxWidth: '960px', margin: '0 auto' }}>
+            <div className="main-content" style={{ maxWidth: '960px' }}>
 
                 {/* ── Controlli globali ── */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '20px' }}>
+                <div className="sliders-grid" style={{ marginBottom: '20px' }}>
                     {[
                         { label: '⚖️ Peso target pallina', min: 200, max: 350, step: 10, val: pesoPallina, set: setPesoPallina, col: C.rosso, unit: 'g', sub: `${totali.numeroPalline} palline dall'impasto` },
                         { label: '📅 Pizze prodotte al mese', min: 500, max: 10000, step: 100, val: pizzeMensili, set: setPizzeMensili, col: C.verde, unit: '', sub: `≈ ${Math.round(pizzeMensili / 26)} pizze/giorno lavorativo` },
@@ -127,7 +127,7 @@ export default function CalcolatorePallina() {
                 </div>
 
                 {/* ── Tabs ── */}
-                <div style={{ display: 'flex', marginBottom: '18px', borderBottom: `3px solid ${BG.nero}` }}>
+                <div className="tabs-bar" style={{ borderBottom: `3px solid ${BG.nero}` }}>
                     {[
                         { key: "ingredienti", label: "🌾 Ingredienti impasto" },
                         { key: "indiretti", label: "⚙️ Costi indiretti" },
@@ -146,7 +146,7 @@ export default function CalcolatorePallina() {
 
                 {/* ── Tab Ingredienti ── */}
                 {activeTab === "ingredienti" && (
-                    <div style={{ marginBottom: '28px' }}>
+                    <div style={{ marginBottom: '28px', overflowX: 'auto' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
                             <span style={{ fontFamily: "'Source Serif 4', serif", fontStyle: 'italic', fontSize: '12px', color: T[500] }}>
                                 Impasto: <strong style={{ color: T[100] }}>{totali.pesoTotale}g</strong> → <strong style={{ color: C.rosso }}>{totali.numeroPalline} palline</strong> da {pesoPallina}g
@@ -188,7 +188,7 @@ export default function CalcolatorePallina() {
 
                 {/* ── Tab Costi Indiretti ── */}
                 {activeTab === "indiretti" && (
-                    <div style={{ marginBottom: '28px' }}>
+                    <div style={{ marginBottom: '28px', overflowX: 'auto' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
                             <span style={{ fontFamily: "'Source Serif 4', serif", fontStyle: 'italic', fontSize: '12px', color: T[500] }}>
                                 Totale mensile: <strong style={{ color: T[100] }}>{fmt2(totali.costoIndirettoMensile)}</strong> · su <strong style={{ color: C.verde }}>{pizzeMensili.toLocaleString("it-IT")} pizze</strong>

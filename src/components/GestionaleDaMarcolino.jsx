@@ -415,12 +415,12 @@ export default function GestionalePizzeria() {
             {/* HEADER brand Da Marcolino */}
             <div style={{ background: BG.nero, padding: '0' }}>
                 {/* Striscia top rossa */}
-                <div style={{ background: C.rosso, padding: '5px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div className="header-strip" style={{ background: C.rosso }}>
                     <span style={{ fontFamily: "'Oswald', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '5px', textTransform: 'uppercase', color: 'rgba(249,246,239,0.7)' }}>Gestionale Interno · Da Marcolino</span>
                     <span style={{ fontFamily: "'Source Serif 4', Georgia, serif", fontSize: '10px', fontStyle: 'italic', color: 'rgba(249,246,239,0.6)' }}>Stroppiana (VC) · Vercelli</span>
                 </div>
                 {/* Corpo header */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap', padding: '18px 32px' }}>
+                <div className="header-body">
                     {/* Logo SVG brand */}
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', borderRight: '1px solid rgba(249,246,239,0.12)', paddingRight: '24px', marginRight: '8px' }}>
                         <div style={{ fontFamily: "'Oswald', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '5px', textTransform: 'uppercase', color: C.rosso, lineHeight: 1, marginBottom: '6px' }}>Trattoria · Pizzeria</div>
@@ -448,10 +448,10 @@ export default function GestionalePizzeria() {
                 </div>
             </div>
 
-            <div style={{ padding: '20px 32px', maxWidth: '1200px', margin: '0 auto' }}>
+            <div className="main-content">
 
                 {/* SLIDER */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '18px' }}>
+                <div className="sliders-grid" style={{ marginBottom: '18px' }}>
                     {[
                         { label: '⚖️ Peso pallina', min: 200, max: 350, step: 10, val: pesoPallina, set: setPesoPallina, col: C.rosso, unit: 'g', sub: `${base.nPalline} palline dall’impasto` },
                         { label: '📅 Pizze/mese', min: 500, max: 10000, step: 100, val: pizzeMensili, set: setPizzeMensili, col: C.verde, unit: '', sub: `≈${Math.round(pizzeMensili / 26)} pizze/giorno lavorativo` },
@@ -468,7 +468,7 @@ export default function GestionalePizzeria() {
                 </div>
 
                 {/* TABS */}
-                <div style={{ display: 'flex', marginBottom: '18px', borderBottom: `3px solid ${BG.nero}`, gap: '0' }}>
+                <div className="tabs-bar" style={{ borderBottom: `3px solid ${BG.nero}` }}>
                     {TABS.map((t, i) => (
                         <button key={t.key} onClick={() => setActiveTab(t.key)} style={{
                             padding: '9px 18px', border: 'none', cursor: 'pointer',
@@ -487,7 +487,7 @@ export default function GestionalePizzeria() {
 
                 {/* ══ TAB IMPASTO ══ */}
                 {activeTab === 'ingredienti' && (
-                    <div style={{ marginBottom: '20px' }}>
+                    <div style={{ marginBottom: '20px', overflowX: 'auto' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
                             <span style={{ fontSize: '12px', color: T[500] }}>Impasto: <b style={{ color: T[100] }}>{base.pesoTot}g</b> → <b style={{ color: C.giallo }}>{base.nPalline} palline</b></span>
                             <button onClick={() => { setIngredienti(p => [...p, { id: nids.ing, nome: 'Nuovo', quantita: 0, costoPerKg: 0, colore: C.giallo }]); setNids(n => ({ ...n, ing: n.ing + 1 })); }} style={{ background: 'transparent', border: `1px solid ${C.giallo}66`, color: C.giallo, borderRadius: '6px', padding: '4px 10px', cursor: 'pointer', fontSize: '12px', fontFamily: 'inherit' }}>+ Aggiungi</button>
@@ -524,7 +524,7 @@ export default function GestionalePizzeria() {
 
                 {/* ══ TAB INDIRETTI ══ */}
                 {activeTab === "indiretti" && (
-                    <div style={{ marginBottom: "20px" }}>
+                    <div style={{ marginBottom: "20px", overflowX: "auto" }}>
                         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
                             <span style={{ fontSize: "12px", color: T[500] }}>Mensile: <b style={{ color: T[100] }}>{fmt2(base.indMens)}</b> → <b style={{ color: C.verde }}>{fmt4(base.indPizza)}</b>/pizza</span>
                             <button onClick={() => { setIndiretti(p => [...p, { id: nids.ind, nome: "Nuova voce", icona: "📋", costoMensile: 0, cat: "sala" }]); setNids(n => ({ ...n, ind: n.ind + 1 })); }} style={{ background: "transparent", border: "1px solid #506090", color: C.verde, borderRadius: "6px", padding: "4px 10px", cursor: "pointer", fontSize: "12px", fontFamily: "inherit" }}>+ Aggiungi</button>
@@ -559,7 +559,7 @@ export default function GestionalePizzeria() {
 
                 {/* ══ TAB MANODOPERA ══ */}
                 {activeTab === "manodopera" && (
-                    <div style={{ marginBottom: "20px" }}>
+                    <div style={{ marginBottom: "20px", overflowX: "auto" }}>
                         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
                             <span style={{ fontSize: "12px", color: T[500] }}>Mensile: <b style={{ color: T[100] }}>{fmt2(base.manMens)}</b> → <b style={{ color: C.rosso }}>{fmt4(base.manPizza)}</b>/pizza</span>
                             <button onClick={() => { setManodopera(p => [...p, { id: nids.man, ruolo: "Nuovo ruolo", icona: "🧑‍🍳", costoOrario: 10, oreGiornaliere: 8, giorniMese: 26 }]); setNids(n => ({ ...n, man: n.man + 1 })); }} style={{ background: "transparent", border: "1px solid #7050a0", color: C.rosso, borderRadius: "6px", padding: "4px 10px", cursor: "pointer", fontSize: "12px", fontFamily: "inherit" }}>+ Aggiungi</button>
@@ -595,7 +595,7 @@ export default function GestionalePizzeria() {
 
                 {/* ══ TAB MAGAZZINO ══ */}
                 {activeTab === "magazzino" && (
-                    <div style={{ marginBottom: "20px" }}>
+                    <div style={{ marginBottom: "20px", overflowX: "auto" }}>
                         {/* Filtri categorie + pulsante aggiunta */}
                         <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", marginBottom: "16px", alignItems: "center" }}>
                             <span style={{ fontSize: "11px", color: T[500], marginRight: "4px" }}>Categoria:</span>
@@ -674,7 +674,7 @@ export default function GestionalePizzeria() {
 
                 {/* ══ TAB MENU ══ */}
                 {activeTab === "menu" && (
-                    <div>
+                    <div style={{ overflowX: "auto" }}>
                         {/* Controlli */}
                         <div style={{ display: "flex", gap: "14px", alignItems: "center", marginBottom: "16px", flexWrap: "wrap" }}>
                             <div style={{ background: BG.bianco, border: `1px solid ${C.verde}40`, borderRadius: "9px", padding: "10px 14px", display: "flex", alignItems: "center", gap: "10px" }}>
@@ -743,7 +743,7 @@ export default function GestionalePizzeria() {
                                                 </div>
                                                 {isEx && (
                                                     <div style={{ borderTop: `1px solid ${BG.border}`, padding: "12px 12px", background: 'rgba(17,17,17,0.04)' }}>
-                                                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px" }}>
+                                                        <div className="resp-2col">
                                                             <div>
                                                                 <div style={{ fontSize: "10px", textTransform: "uppercase", letterSpacing: "0.1em", color: T[500], marginBottom: "8px" }}>Condimenti</div>
                                                                 {piz.cond.map((cd, i) => {
