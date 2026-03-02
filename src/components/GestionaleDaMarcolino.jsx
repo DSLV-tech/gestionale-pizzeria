@@ -487,11 +487,12 @@ export default function GestionalePizzeria() {
 
                 {/* ══ TAB IMPASTO ══ */}
                 {activeTab === 'ingredienti' && (
-                    <div style={{ marginBottom: '20px', overflowX: 'auto' }}>
+                    <div style={{ marginBottom: '20px' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
                             <span style={{ fontSize: '12px', color: T[500] }}>Impasto: <b style={{ color: T[100] }}>{base.pesoTot}g</b> → <b style={{ color: C.giallo }}>{base.nPalline} palline</b></span>
                             <button onClick={() => { setIngredienti(p => [...p, { id: nids.ing, nome: 'Nuovo', quantita: 0, costoPerKg: 0, colore: C.giallo }]); setNids(n => ({ ...n, ing: n.ing + 1 })); }} style={{ background: 'transparent', border: `1px solid ${C.giallo}66`, color: C.giallo, borderRadius: '6px', padding: '4px 10px', cursor: 'pointer', fontSize: '12px', fontFamily: 'inherit' }}>+ Aggiungi</button>
                         </div>
+                        <div className="scroll-table"><div style={{ minWidth: '500px' }}>
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 90px 120px 110px 30px', gap: '6px', padding: '4px 10px', fontSize: '10px', letterSpacing: '0.1em', textTransform: 'uppercase', color: T[500] }}>
                             <span>Ingrediente</span><span style={{ textAlign: 'right' }}>Qtà g</span><span style={{ textAlign: 'right' }}>€/kg</span><span style={{ textAlign: 'right' }}>Costo</span><span></span>
                         </div>
@@ -519,16 +520,18 @@ export default function GestionalePizzeria() {
                                 );
                             });
                         })()}
+                        </div></div>
                     </div>
                 )}
 
                 {/* ══ TAB INDIRETTI ══ */}
                 {activeTab === "indiretti" && (
-                    <div style={{ marginBottom: "20px", overflowX: "auto" }}>
+                    <div style={{ marginBottom: "20px" }}>
                         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
                             <span style={{ fontSize: "12px", color: T[500] }}>Mensile: <b style={{ color: T[100] }}>{fmt2(base.indMens)}</b> → <b style={{ color: C.verde }}>{fmt4(base.indPizza)}</b>/pizza</span>
                             <button onClick={() => { setIndiretti(p => [...p, { id: nids.ind, nome: "Nuova voce", icona: "📋", costoMensile: 0, cat: "sala" }]); setNids(n => ({ ...n, ind: n.ind + 1 })); }} style={{ background: "transparent", border: "1px solid #506090", color: C.verde, borderRadius: "6px", padding: "4px 10px", cursor: "pointer", fontSize: "12px", fontFamily: "inherit" }}>+ Aggiungi</button>
                         </div>
+                        <div className="scroll-table"><div style={{ minWidth: '380px' }}>
                         {Object.entries(CAT_IND).map(([ck, cv]) => {
                             const voci = indiretti.filter(i => i.cat === ck);
                             if (!voci.length) return null;
@@ -554,16 +557,18 @@ export default function GestionalePizzeria() {
                                 </div>
                             );
                         })}
+                        </div></div>
                     </div>
                 )}
 
                 {/* ══ TAB MANODOPERA ══ */}
                 {activeTab === "manodopera" && (
-                    <div style={{ marginBottom: "20px", overflowX: "auto" }}>
+                    <div style={{ marginBottom: "20px" }}>
                         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
                             <span style={{ fontSize: "12px", color: T[500] }}>Mensile: <b style={{ color: T[100] }}>{fmt2(base.manMens)}</b> → <b style={{ color: C.rosso }}>{fmt4(base.manPizza)}</b>/pizza</span>
                             <button onClick={() => { setManodopera(p => [...p, { id: nids.man, ruolo: "Nuovo ruolo", icona: "🧑‍🍳", costoOrario: 10, oreGiornaliere: 8, giorniMese: 26 }]); setNids(n => ({ ...n, man: n.man + 1 })); }} style={{ background: "transparent", border: "1px solid #7050a0", color: C.rosso, borderRadius: "6px", padding: "4px 10px", cursor: "pointer", fontSize: "12px", fontFamily: "inherit" }}>+ Aggiungi</button>
                         </div>
+                        <div className="scroll-table"><div style={{ minWidth: '520px' }}>
                         <div style={{ display: "grid", gridTemplateColumns: "30px 1fr 90px 100px 90px 110px 30px", gap: "6px", padding: "4px 10px", fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase", color: T[500] }}>
                             <span></span><span>Ruolo</span><span style={{ textAlign: "right" }}>€/ora</span><span style={{ textAlign: "right" }}>Ore/gg</span><span style={{ textAlign: "right" }}>Gg/mese</span><span style={{ textAlign: "right" }}>Mensile</span><span></span>
                         </div>
@@ -587,6 +592,7 @@ export default function GestionalePizzeria() {
                                 </div>
                             );
                         })}
+                        </div></div>
                         <div style={{ background: `rgba(200,57,43,0.06)`, border: `1px dashed ${C.rosso}28`, borderRadius: "9px", padding: "10px 14px", fontSize: "11px", color: T[500], lineHeight: 1.6 }}>
                             💡 Inserire il <b style={{ color: C.rosso }}>costo orario lordo aziendale</b> (netto + contributi + ratei). Solitamente +40–50% dello stipendio netto.
                         </div>
@@ -595,7 +601,7 @@ export default function GestionalePizzeria() {
 
                 {/* ══ TAB MAGAZZINO ══ */}
                 {activeTab === "magazzino" && (
-                    <div style={{ marginBottom: "20px", overflowX: "auto" }}>
+                    <div style={{ marginBottom: "20px" }}>
                         {/* Filtri categorie + pulsante aggiunta */}
                         <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", marginBottom: "16px", alignItems: "center" }}>
                             <span style={{ fontSize: "11px", color: T[500], marginRight: "4px" }}>Categoria:</span>
@@ -624,6 +630,7 @@ export default function GestionalePizzeria() {
                         </div>
 
                         {/* Header colonne */}
+                        <div className="scroll-table"><div style={{ minWidth: '450px' }}>
                         <div style={{ display: "grid", gridTemplateColumns: "1fr 55px 80px 80px 80px 90px", gap: "6px", padding: "4px 10px", fontSize: "10px", letterSpacing: "0.1em", textTransform: "uppercase", color: T[500], marginBottom: "4px" }}>
                             <span>Ingrediente / Prodotto</span>
                             <span style={{ textAlign: "center" }}>U.M.</span>
@@ -669,12 +676,13 @@ export default function GestionalePizzeria() {
                                 </div>
                             );
                         })}
+                        </div></div>
                     </div>
                 )}
 
                 {/* ══ TAB MENU ══ */}
                 {activeTab === "menu" && (
-                    <div style={{ overflowX: "auto" }}>
+                    <div>
                         {/* Controlli */}
                         <div style={{ display: "flex", gap: "14px", alignItems: "center", marginBottom: "16px", flexWrap: "wrap" }}>
                             <div style={{ background: BG.bianco, border: `1px solid ${C.verde}40`, borderRadius: "9px", padding: "10px 14px", display: "flex", alignItems: "center", gap: "10px" }}>
@@ -698,6 +706,7 @@ export default function GestionalePizzeria() {
                         </div>
 
                         {/* Header colonne */}
+                        <div className="scroll-table"><div style={{ minWidth: '560px' }}>
                         <div style={{ display: "grid", gridTemplateColumns: "24px 1fr 110px 100px 100px 80px 28px", gap: "6px", padding: "4px 10px", fontSize: "10px", letterSpacing: "0.08em", textTransform: "uppercase", color: T[500], marginBottom: "4px" }}>
                             <span>#</span><span>Pizza</span><span style={{ textAlign: "right" }}>Costo tot.</span><span style={{ textAlign: "right" }}>Prezzo sugg.</span><span style={{ textAlign: "right" }}>Prezzo menu</span><span style={{ textAlign: "right" }}>FC%</span><span></span>
                         </div>
@@ -814,6 +823,7 @@ export default function GestionalePizzeria() {
                             );
                         })}
 
+                        </div></div>
                         {/* Riepilogo menu */}
                         <div style={{ background: BG.bianco, border: `1px solid ${BG.border}`, borderRadius: "13px", padding: "20px", marginTop: "8px" }}>
                             <h3 style={{ margin: "0 0 14px 0", fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase", color: T[500] }}>Riepilogo Menu — {pizzeCalc.length} ricette</h3>

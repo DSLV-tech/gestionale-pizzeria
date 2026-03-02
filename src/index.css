@@ -253,3 +253,11 @@ body {
     }
     .app-nav-btn .nav-icon { font-size: 14px; }
 }
+
+/* ════════════════════════════════════════════════
+   TABLE SCROLL — Orizzontale su mobile
+════════════════════════════════════════════════ */
+.scroll-table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}

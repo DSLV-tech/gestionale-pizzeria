@@ -146,7 +146,7 @@ export default function CalcolatorePallina() {
 
                 {/* ── Tab Ingredienti ── */}
                 {activeTab === "ingredienti" && (
-                    <div style={{ marginBottom: '28px', overflowX: 'auto' }}>
+                    <div style={{ marginBottom: '28px' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
                             <span style={{ fontFamily: "'Source Serif 4', serif", fontStyle: 'italic', fontSize: '12px', color: T[500] }}>
                                 Impasto: <strong style={{ color: T[100] }}>{totali.pesoTotale}g</strong> → <strong style={{ color: C.rosso }}>{totali.numeroPalline} palline</strong> da {pesoPallina}g
@@ -154,6 +154,7 @@ export default function CalcolatorePallina() {
                             <button onClick={addIng} style={{ background: 'transparent', border: `1px solid ${C.giallo}66`, color: C.giallo, borderRadius: '4px', padding: '5px 12px', cursor: 'pointer', fontSize: '12px', fontFamily: 'inherit' }}>+ Aggiungi</button>
                         </div>
 
+                        <div className="scroll-table"><div style={{ minWidth: '460px' }}>
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 100px 130px 120px 36px', gap: '8px', padding: '4px 10px', fontFamily: "'Oswald', sans-serif", fontSize: '9px', fontWeight: 600, letterSpacing: '2px', textTransform: 'uppercase', color: T[500] }}>
                             <span>Ingrediente</span><span style={{ textAlign: 'right' }}>Qtà (g)</span><span style={{ textAlign: 'right' }}>€ / kg</span><span style={{ textAlign: 'right' }}>Costo riga</span><span></span>
                         </div>
@@ -183,12 +184,13 @@ export default function CalcolatorePallina() {
                             );
                         });
                         })()}
+                        </div></div>
                     </div>
                 )}
 
                 {/* ── Tab Costi Indiretti ── */}
                 {activeTab === "indiretti" && (
-                    <div style={{ marginBottom: '28px', overflowX: 'auto' }}>
+                    <div style={{ marginBottom: '28px' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
                             <span style={{ fontFamily: "'Source Serif 4', serif", fontStyle: 'italic', fontSize: '12px', color: T[500] }}>
                                 Totale mensile: <strong style={{ color: T[100] }}>{fmt2(totali.costoIndirettoMensile)}</strong> · su <strong style={{ color: C.verde }}>{pizzeMensili.toLocaleString("it-IT")} pizze</strong>
@@ -196,6 +198,7 @@ export default function CalcolatorePallina() {
                             <button onClick={addInd} style={{ background: 'transparent', border: `1px solid ${C.verde}55`, color: C.verde, borderRadius: '4px', padding: '5px 12px', cursor: 'pointer', fontSize: '12px', fontFamily: 'inherit' }}>+ Aggiungi voce</button>
                         </div>
 
+                        <div className="scroll-table"><div style={{ minWidth: '420px' }}>
                         {Object.entries(CATEGORIE).map(([catKey, cat]) => {
                             const voci = indiretti.filter(i => i.cat === catKey);
                             if (voci.length === 0) return null;
@@ -226,6 +229,7 @@ export default function CalcolatorePallina() {
                                 </div>
                             );
                         })}
+                        </div></div>
                     </div>
                 )}
 
